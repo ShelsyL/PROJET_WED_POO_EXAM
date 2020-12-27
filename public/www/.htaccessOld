@@ -1,0 +1,44 @@
+#PUBLIC
+
+#--------------------------------------------------
+# Répertoire : /
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+
+# NOTES
+## Un slug c'est la version du titre tt en minuscule et sans espace ou tout les caractères spéciaux sont remplacé par un tiret
+## [a-z0-9] => on a d'abord une lettre en minuscule de a à z
+##[a-z0-9\-] puis comme 2ème caractère on peut avoir une minuscule de a à z ou un chiffre de 0 à 9 ou un "-".
+## * => 0 ou plusieurs (optionnel)
+
+
+# ROUTE D'UN POST
+# PATTERN: posts/id/slug.html (titre = Article 1) => (slug: article-1)
+# URL: post.php?ID=x
+RewriteRule ^posts\/([1-9][0-9]*)\/[a-z0-9][a-z0-9\-]*$ index.php?postId=$1 [L]
+
+
+# FORMULAIRE DE CONNEXION AU BACKOFFICE
+# PATTERN: users/login
+# VERS: index.php?user=login
+RewriteRule ^users\/login$ index.php?users=loginForm [L]
+
+
+# TRAITEMENT DU FORMULAIRE DE CONNEXION AU BACKOFFICE
+# PATTERN: users/login/submit
+# VERS: index.php?users=loginCheck
+RewriteRule ^users\/login\/submit$ index.php?users=loginCheck [L]
+
+
+# --------------------------------------------------
+RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
+RewriteRule ^(.*)$ index.php [L]

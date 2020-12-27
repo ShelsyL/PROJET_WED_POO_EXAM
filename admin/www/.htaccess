@@ -1,0 +1,98 @@
+#ADMIN
+
+#--------------------------------------------------
+# Répertoire : /
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+#--------------------------------------------------
+# ROUTES
+#--------------------------------------------------
+
+  #--------------------------------------------------
+  # ROUTES DES POSTS
+  #--------------------------------------------------
+
+      # LISTE DES POSTS (On arrive sur la liste des posts)
+      # PATTERN: posts
+      # URL: index.php?posts
+      RewriteRule ^posts$ index.php?posts [L]
+
+      # AJOUT POSTS: FORMULAIRE (On arrive sur le formulaire pour ajouter un post)
+      # PATTERN: posts/add/form
+      # URL: index.php?posts=addForm
+      RewriteRule ^posts\/add\/form$ index.php?posts=addForm [L]
+
+      # AJOUT D'UN POST: INSERT
+      # PATTERN: posts/add/insert
+      # URL: index.php?posts=addInsert
+      RewriteRule ^posts\/add\/insert$ index.php?posts=add [L]
+
+      # SUPPRESSION POSTS
+      # PATTERN: posts/delete/x
+      # URL: index.php?posts=delete&id=x
+      RewriteRule ^posts\/delete\/([1-9][0-9]*)$ index.php?posts=delete&id=$1 [L]
+
+      # EDITION POSTS: FORMULAIRE
+      # PATTERN: posts/edit/form/x
+      # URL: index.php?posts=editForm&id=x
+      RewriteRule ^posts\/edit\/form\/([1-9][0-9]*)$ index.php?posts=editForm&id=$1 [L]
+
+    # EDITION POSTS: UPDATE
+    # PATTERN: posts/edit/x
+    # URL: index.php?posts=edit&id=x
+    RewriteRule ^posts\/edit\/([1-9][0-9]*)$ index.php?posts=edit&id=$1 [L]
+
+
+
+  #--------------------------------------------------
+  # ROUTES DES CATEGORIES
+  #--------------------------------------------------
+
+      # LISTE DES CATEGORIES
+      # PATTERN: categories
+      # URL: index.php?categories=index
+      RewriteRule ^categories$ index.php?categories=index [L]
+
+      # AJOUT CATEGORIES : FORMULAIRE
+      # PATTERN: categories/add/form
+      # URL: index.php?categories=addForm
+      RewriteRule ^categories\/add\/form$ index.php?categories=addForm [L]
+
+      # AJOUT CATEGORIES : INSERT
+      # PATTERN: categories/add/insert
+      # URL: index.php?categories=add
+      RewriteRule ^categories\/add\/insert$ index.php?categories=add [L]
+
+      # SUPPRESION CATEGORIES
+      # PATTERN: categories/delete/x
+      # URL: index.php?categories=delete&id=x
+      RewriteRule ^categories\/delete\/([1-9][0-9]*)$ index.php?categories=delete&id=$1 [L]
+
+      # MODIFICATION D'UNE CATEGORIES: FORMULAIRE (on va sur le formulaire de modification)
+      # PATTERN: categories/edit/form/x
+      # URL: index.php?categories=editForm&id=x
+      RewriteRule ^categories\/edit\/form\/([1-9][0-9]*)$ index.php?categories=editForm&id=$1 [L]
+
+      # MODIFICATION D'UNE CATEGORIES: UPDATE (on envois la mofication dans le formulaire général)
+      # PATTERN: categories/edit/x
+      # URL: index.php?categories=edit&id=x
+      RewriteRule ^categories\/edit\/([1-9][0-9]*)$ index.php?categories=edit&id=$1 [L]
+
+
+  #--------------------------------------------------
+  # ROUTE DU USER
+  #--------------------------------------------------
+  	  # DECONNEXION DU USER / LOGOUT
+      # PATTERN/ user/logout
+      # URL: index.php?user=logout
+      RewriteRule ^user\/logout$ index.php?user=logout [L]
+
+# --------------------------------------------------
+RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
+RewriteRule ^(.*)$ index.php [L]
