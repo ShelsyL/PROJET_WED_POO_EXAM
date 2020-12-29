@@ -19,9 +19,9 @@
 
 // NEW : Ecriture Objet
   if (isset($_GET['postId'])):
-      // Objet de type PostsControleur avec 2 méthodes (indexAction et showAction)
+      // On instancie un Objet de type PostsControleur
       $postCtrl = new App\Controleurs\PostsControleur();
-      // Je lance la méthode showAction() de l'objet PostsControleur
+      // On lance l'action showAction() de l'objet PostsControleur
       $postCtrl->showAction($connexion, $_GET['postId']);
 
 
@@ -45,6 +45,6 @@ endif;
   else :
     // Objet de type PostsControleur avec 2 méthodes (indexAction et showAction)
     $postCtrl = new App\Controleurs\PostsControleur();
-    // Je lance la méthode indexAction() de l'objet PostsControleur
+    // On lance l'action indexAction() de l'objet PostsControleur
     $postCtrl->indexAction($connexion);
   endif;

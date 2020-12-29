@@ -9,10 +9,11 @@ use \App\Modeles\PostsModele;
 
 class PostsControleur {
 
-  // Je met dans $posts la liste des 10 derniers posts que je demande au modele.
   public function indexAction(\PDO $connexion) {
-      include_once '../app/modeles/postsModele.php';
-    $posts = PostsModele\findAll($connexion);
+      // On instancie (créer un nouveau objet) un objet de type PostsGestionnaire()
+      $postsGestionnaire = new \App\Modeles\PostsGestionnaire();
+      // On lance la méthode findAll de PostsGestionnaire que je met dans $postsData
+      $postsData = $postsGestionnaire->findAll();
 
     // Je charge la vue posts/index dans $content
     GLOBAL $content;
@@ -22,13 +23,14 @@ class PostsControleur {
   }
 
 
-  // Je met dans $post les infos du post que je demande au modèle
   public function showAction(\PDO $connexion, int $id) {
-      include_once '../app/modeles/postsModele.php';
-    $post = PostsModele\findOneById($connexion, $id);
+      // On instancie (créer un nouveau objet) un objet de type PostsGestionnaire()
+      $postsGestionnaire = new \App\Modeles\PostsGestionnaire();
+      // On lance la méthode findAll de PostsGestionnaire que je met dans $postData
+      $postData = $postsGestionnaire->findOneById($connexion, $id);
 
     // Je charge et je mets dans $author les infos de l'auteur du post que je demande au modèle
-      include_once '../app/modeles/authorsModele.php';
+    include_once '../app/modeles/authorsModele.php';
     $author = \App\Modeles\AuthorsModele\findOneById($connexion, $post['author_id']);
 
   // Je charge la vue show dans $content
@@ -37,6 +39,6 @@ class PostsControleur {
     ob_start();
       include '../app/vues/posts/show.php';
     $content = ob_get_clean();
-   }
+  }
 
 }

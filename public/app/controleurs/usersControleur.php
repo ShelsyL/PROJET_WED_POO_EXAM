@@ -3,10 +3,12 @@
   ./public/app/controleurs/usersControleur.php
   CONTROLEUR DES USERS
  */
-  namespace App\Controleurs\UsersControleur;
+  namespace App\Controleurs;
   use \App\Modeles\UsersModele;
 
-  function loginFormAction () {
+class UsersControleur {
+
+  public function loginFormAction () {
     // Permet qu'une fois connecter si on remet admin dans le lien on reste connecter
     if (isset($_SESSION['user'])):
       header('location: ' . BASE_URL_ADMIN);
@@ -18,7 +20,7 @@
     $content = ob_get_clean();
   }
 
-  function loginCheckAction (\PDO $connexion) {
+  public function loginCheckAction (\PDO $connexion) {
     // On va chercher le user dont le login et le mot de passe correspondent au $_POST
     include_once '../app/modeles/usersModele.php';
     $user = UsersModele\findOneByLoginPassword($connexion, $_POST['login'], $_POST['password']);
@@ -32,3 +34,5 @@
       header('location: '. BASE_URL_PUBLIC .'users/login');
     }
   }
+
+}
