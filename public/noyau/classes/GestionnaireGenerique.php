@@ -5,10 +5,16 @@ use \Noyau\Classes\App;
 
 abstract class GestionnaireGenerique {
 
-  protected $_table ='default';
-  protected $_class ='default';
+  protected $_table;
+  protected $_class; // $class sera crée à partir de $_table
 
-// FUNCTION finOneById
+  protected function __construc{
+    $this->_class = '\App\Modeles\\'
+                    . ucfirst(substr($this->table, 0, -1));
+  }
+
+
+// METHODES CRUD
   public function finOneById(int $id) {
     $sql = "SELECT *
             FROM `{$this->_table}`
@@ -20,17 +26,10 @@ abstract class GestionnaireGenerique {
   }
 
 // FONCTON findAll
-  public function findAll(string $tri ='id', string $triOrder = "ASC", int $limit = null ) :array {
+  public function findAll(string $tri ='id'){
     $sql = "SELECT *
             FROM `{$this->_table}`
-            ORDER BY $tri $triOrder";
-    // Si $limit existe on l'ajoute
-    if($limit){
-      $sql .= " LIMIT ".$limit;
-    }
-    // Je termine par l'ajout du ;
-    $sql .= ";";
-
+            ORDER BY $tri ASC;";
     $rs = App::getConnexion()->prepare($sql);
     $rs->execute();
     $tab = $rs->fetchAll(\PDO::FETCH_ASSOC);
@@ -38,6 +37,7 @@ abstract class GestionnaireGenerique {
     return $this->fromAssocToObject($tab);
   }
 
+// AUTRES METHODES
   protected function fromAssocToObject(array $rs){
     $tab = [];
     foreach($rs as $r){
