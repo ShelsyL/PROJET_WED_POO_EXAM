@@ -2,6 +2,8 @@
 /*
   ./public/noyau/contantes.php
   Constantes du framework
+  Définir une constante (ROOT) qui est le chemin vers l'application
+  Ici la constante est BASE_URL_PUBLIC ou BASE_URL_ADMIN
  */
 
 

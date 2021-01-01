@@ -1,0 +1,46 @@
+<?php
+
+/*
+./app/modeles/Authors.php
+Modele d'un autheur
+ */
+
+namespace App\Modeles;
+
+class Author extends \Noyau\Classes\ClasseGenerique {
+
+  private $_id = null, $_login, $_password, $_createdAt;
+
+  // GETTERS
+  public function getId(){
+    return $this->_id;
+  }
+  public function getLogin(){
+    return $this->_login;
+  }
+  public function getPassword(){
+    return $this->_password;
+  }
+  public function getCreatedAt(){
+    return $this->_createdAt;
+  }
+
+  // SETTERS
+  public function setId(int $data = null){
+    if (isset($data)):
+      $this->_id = $data;
+  }
+  public function setLogin(int $data = null){
+    if (isset($data)):
+      $this->_login = $data;
+  }
+  public function setPassword(int $data = null){
+    if (isset($data)):
+      $this->_password = $data;
+  }
+  public function setCreatedAt(int $data = null){
+    if (isset($data)):
+      $this->_createdAt = $data;
+  }
+
+}

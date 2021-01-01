@@ -11,13 +11,21 @@ class TagsControleur {
 
   public function indexByPostIdAction(\PDO $connexion, int $postId) {
     // Je met dans $tags la liste des tags du posts que je demande au modele.
-    include_once '../app/modeles/tagsModele.php';
-    $tags = TagsModele\findAllByPostId($connexion, $postId); // On ne prend que ceux qui correspond au post
+    //include_once '../app/modeles/tagsModele.php';
+    //$tags = TagsModele\findAllByPostId($connexion, $postId); // On ne prend que ceux qui correspond au post
+
+    // On instancie (créer un nouveau objet) un objet de type TagsGestionnaire()
+    $tagsGestionnaire = new \App\Modeles\TagsGestionnaire();
+    // On lance la méthode findAllByPostId de $tagsGestionnaire que je met dans $tagData
+    $tags = $tagsGestionnaire->findAllByPostId($connexion, $postId);
+
+
+
 
     // Je charge la vue tags/indexByPostId directement (pas dans $content), donc pas de ob_start();
      		include'../app/vues/tags/indexByPostId.php';
      		// SI : include'../app/vues/tags/index.php'; => index, ce serait la liste complete des tags
      		// indexByPostId : include'../app/vues/tags/indexByPostId.php'; => Permet d'avoir un index qui correspond au poste.
-   }
+  }
 
 }

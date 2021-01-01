@@ -3,7 +3,8 @@
 	./public/app/vues/posts/index.php
   LISTE DES POSTS
 	Variables disponibles :
-    	- $posts : ARRAY(ARRAY(id, title, content, created_at, image, author_id, categorie_id))
+      -$post : OBJET Post (id, title, content, created_at, image, author_id, categorie_id)
+)
 */
 ?>
 
@@ -31,10 +32,10 @@
           <!-- LIEN DU POST -->
             <a class="d-inline-block" href="posts/<?php echo $post['id']; ?>/<?php echo \Noyau\Fonctions\slugify($post['title']) ?>">
               <!-- TITRE DU POST -->
-                <h2><?php echo $post['title'] ?></h2>
+                <h2><?php echo $post->getTitle(); ?></h2>
             </a>
             <!-- TEXTE DU POST -->
-            <p><?php echo $post['content'] ?></p>
+            <p><?php echo $post->getContent(); ?></p>
 
             <!-- TAG(S) DU POST -->
               <?php

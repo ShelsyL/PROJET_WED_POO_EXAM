@@ -16,7 +16,8 @@ class PostsGestionnaire {
             LIMIT 10;";
     // Pas de paramètres extérieur donc on peut l'exécuter directement
     $rs = $connexion->query($sql);
-    return $rs->fetchAll(\PDO::FETCH_ASSOC); // On retourne un tableau indéxé de tableau associatif - Ce tableau associatif va se retouver dans $posts du fichier ./app/controleurs/postsControleur.php
+    $posts = return $rs->fetchAll(\PDO::FETCH_ASSOC); // On retourne un tableau indéxé de tableau associatif - Ce tableau associatif va se retouver dans $posts du fichier ./app/controleurs/postsControleur.php
+    return new Posts($posts);
   }
 
   // Va chercher un par son id
@@ -27,7 +28,8 @@ class PostsGestionnaire {
   	$rs = $connexion->prepare($sql);
   	$rs->bindValue(':id', $id, \PDO::PARAM_INT);
   	$rs->execute();
-  	return $rs->fetch(\PDO::FETCH_ASSOC);
+  	$post = return $rs->fetch(\PDO::FETCH_ASSOC);
+    return new Posts($post);
   }
 
 }

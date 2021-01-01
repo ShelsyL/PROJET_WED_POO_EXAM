@@ -13,7 +13,7 @@ class PostsControleur {
       // On instancie (créer un nouveau objet) un objet de type PostsGestionnaire()
       $postsGestionnaire = new \App\Modeles\PostsGestionnaire();
       // On lance la méthode findAll de PostsGestionnaire que je met dans $postsData
-      $postsData = $postsGestionnaire->findAll();
+      $posts = $postsGestionnaire->findAll();
 
     // Je charge la vue posts/index dans $content
     GLOBAL $content;
@@ -27,7 +27,7 @@ class PostsControleur {
       // On instancie (créer un nouveau objet) un objet de type PostsGestionnaire()
       $postsGestionnaire = new \App\Modeles\PostsGestionnaire();
       // On lance la méthode findAll de PostsGestionnaire que je met dans $postData
-      $postData = $postsGestionnaire->findOneById($connexion, $id);
+      $post = $postsGestionnaire->findOneById($connexion, $id);
 
     // Je charge et je mets dans $author les infos de l'auteur du post que je demande au modèle
     include_once '../app/modeles/authorsModele.php';
