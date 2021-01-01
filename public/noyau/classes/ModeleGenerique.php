@@ -1,8 +1,14 @@
 <?php
+/*
+./noyau/classes/ModeleGenerique.php
+Modèle générique avec un hydrateur
+Cette classe générique n'est liée qu'au Modele, elle n'hydratera pas un gestionnaire ni un controleur.
+
+ */
 
 namespace Noyau\Classes;
 
-abstract class ClassGenerique {
+abstract class ModeleGenerique {
 
   // CONSTRUCTEUR
   public function __construct(array $data = null){

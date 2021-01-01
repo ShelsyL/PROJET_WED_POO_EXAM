@@ -1,4 +1,8 @@
 <?php
+
+use \Noyau\Classes\App;
+use \App\Controleurs\PostsControleur;
+
 /*
 	./public/app/routeur.php
 	ROUTEUR PRINCIPAL
@@ -22,14 +26,14 @@
       // On instancie un Objet de type PostsControleur
       $postCtrl = new App\Controleurs\PostsControleur();
       // On lance l'action showAction() de l'objet PostsControleur
-      $postCtrl->showAction($connexion, $_GET['postId']);
+      $postCtrl->showAction($_GET['postId']);
 
 
 // ROUTES DES USERS
     elseif (isset($_GET['users'])):
       include_once '../app/routeurs/users.php';
 
-// ROUTE PAR DEFAUT
+ // ROUTE PAR DEFAUT
  // PATTERN : /
  // CTRL: postsControleur
  // ACTION: index
@@ -44,7 +48,7 @@ endif;
 // NEW : Ecriture Objet
   else :
     // Objet de type PostsControleur avec 2 méthodes (indexAction et showAction)
-    $postCtrl = new App\Controleurs\PostsControleur();
+    $postCtrl = new PostsControleur();
     // On lance l'action indexAction() de l'objet PostsControleur
-    $postCtrl->indexAction($connexion);
+    $postCtrl->indexAction();
   endif;

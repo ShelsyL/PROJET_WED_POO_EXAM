@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Wedding | <?php echo $title; ?> </title>
-    <base href="<?php echo BASE_URL_PUBLIC; ?>" target="_blank">
+    <base href="<?php echo \Noyau\Classes\App::getRoot(); ?>" target="_top">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">

@@ -1,7 +1,7 @@
 <?php
 /*
 	./public/app/vues/tags/index.php
-  LISTE DES TAGS 
+  LISTE DES TAGS
     Variables disponibles :
     	- $tags: ARRAY(ARRAY(id, name))
 */

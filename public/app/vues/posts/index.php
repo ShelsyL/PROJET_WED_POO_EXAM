@@ -12,15 +12,20 @@
 
 <!-- LISTE DES POSTS -->
   <?php
-    foreach ($posts as $post):
-      $created_at = strtotime($post['created_at']); // On transforme la date en champs de type date
+  var_dump($postsTags);
+    foreach ($postsTags as $postTag):
+
+      $post = $postTag['post'];
+      $tags = $postTag['tags'];
+
+      $created_at = strtotime($post->getCreated_at()); // On transforme la date en champs de type date
       ?>
 
     <?php //var_dump($post); ?>
 
     <article class="blog_item">
         <div class="blog_item_img">
-            <img class="card-img rounded-0" src="assets/img/blog/<?php echo $post['image'] ?>" alt="">
+            <img class="card-img rounded-0" src="assets/img/blog/<?php echo $post->getImage(); ?>" alt="">
             <a href="#" class="blog_item_date">
               <!-- DATE DU POST-->
                 <h3><?php echo date('d', $created_at) ?></h3>
@@ -29,22 +34,22 @@
         </div>
 
         <div class="blog_details">
+
           <!-- LIEN DU POST -->
-            <a class="d-inline-block" href="posts/<?php echo $post['id']; ?>/<?php echo \Noyau\Fonctions\slugify($post['title']) ?>">
-              <!-- TITRE DU POST -->
+            <a class="d-inline-block" href="posts/<?php echo $post->getId();?>/<?php echo \Noyau\Classes\Utils::slugify($post->getTitle()); ?>">
+            <!-- TITRE DU POST -->
                 <h2><?php echo $post->getTitle(); ?></h2>
             </a>
-            <!-- TEXTE DU POST -->
+
+            <!-- CONTENT DU POST -->
             <p><?php echo $post->getContent(); ?></p>
 
             <!-- TAG(S) DU POST -->
-              <?php
-             // On inclus le controleur tags
-              include_once '../app/controleurs/tagsControleur.php';
-            // On lance (la liste des tags qui correspondent au post) l'action indexByPostIdAction (index, car c'est une liste de chose mais par PostID)
-              \App\Controleurs\TagsControleur\indexByPostIdAction($connexion, $post['id']); // On lui balance la connexion et le postId
+            <?php
+              foreach($tags as $tag){
+                echo $tag->getName();
+              }
             ?>
-
         </div>
     </article>
   <?php endforeach; ?>

@@ -6,30 +6,18 @@ Gestionnaire des posts (Toutes les fonctions)
  */
 
 namespace App\Modeles;
+use \App\Modeles\Post;
+use \Noyau\Classes\GestionnaireGenerique;
 
-class PostsGestionnaire {
-  // Va chercher tout (Posts)
-  public function findAll (\PDO $connexion) :array { // On récupère la connexion
-  	$sql = "SELECT *
-        		FROM posts
-      			ORDER BY created_at DESC
-            LIMIT 10;";
-    // Pas de paramètres extérieur donc on peut l'exécuter directement
-    $rs = $connexion->query($sql);
-    $posts = return $rs->fetchAll(\PDO::FETCH_ASSOC); // On retourne un tableau indéxé de tableau associatif - Ce tableau associatif va se retouver dans $posts du fichier ./app/controleurs/postsControleur.php
-    return new Posts($posts);
+class PostsGestionnaire extends GestionnaireGenerique {
+
+  public function __construct(){
+    $this->_table = 'posts';
+    $this->_class = '\App\Modeles\Post';
   }
-
-  // Va chercher un par son id
-  public function findOneById(\PDO $connexion, int $id) :array {
-  	$sql = "SELECT *
-  					FROM posts
-  					WHERE id = :id;";
-  	$rs = $connexion->prepare($sql);
-  	$rs->bindValue(':id', $id, \PDO::PARAM_INT);
-  	$rs->execute();
-  	$post = return $rs->fetch(\PDO::FETCH_ASSOC);
-    return new Posts($post);
+  // Va chercher tout (Posts)
+  public function findAllPost() :array { // On récupère la connexion
+    return $this->findAll('created_at','DESC',5);
   }
 
 }

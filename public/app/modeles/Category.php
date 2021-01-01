@@ -7,7 +7,7 @@ Modele d'une categorie
 
 namespace App\Modeles;
 
-class Category extends \Noyau\Classes\ClasseGenerique {
+class Category extends \Noyau\Classes\ModeleGenerique {
 
   private $_id = null, $_name, $_createdAt;
 
