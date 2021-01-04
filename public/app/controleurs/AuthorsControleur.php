@@ -6,14 +6,12 @@
 
 namespace App\Controleurs;
 use \Noyau\Classes\ControleurGenerique;
-use \App\Modeles\TagsGestionnaire;
 use \App\Modeles\AuthorsGestionnaire;
 
-class PostsControleur extends ControleurGenerique {
+class AuthorsControleur extends ControleurGenerique {
 
   public function __construct(){
-    $this->_table='posts';
+    $this->_table='authors';
     parent::__construct();
   }
-
 }

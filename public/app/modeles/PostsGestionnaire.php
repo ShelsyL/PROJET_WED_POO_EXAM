@@ -2,7 +2,7 @@
 
 /*
 ./app/modeles/PostsGestionnaire.php
-Gestionnaire des posts 
+Gestionnaire des posts
  */
 
 namespace App\Modeles;

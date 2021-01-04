@@ -23,18 +23,15 @@
 
 <!-- CATEGORIES -->
   <?php
-    include_once '../app/modeles/categoriesModele.php';
-    $categories = \App\Modeles\CategoriesModele\findAll($connexion);
-    include '../app/vues/categories/index.php';
+    $catCtrl = new App\Controleurs\CategoriesControleur();
+    $catCtrl->indexAction();
    ?>
 
 <!-- TAGS -->
 <?php
-  include_once '../app/modeles/tagsModele.php';
-  $tags = \App\Modeles\TagsModele\findAll($connexion);
-  include '../app/vues/tags/index.php';
+  $tagCtrl = new App\Controleurs\TagsControleur();
+  $tagCtrl->indexAction();
  ?>
-
 
   <aside class="single_sidebar_widget newsletter_widget">
       <h4 class="widget_title">Newsletter</h4>

@@ -2,6 +2,7 @@
 /*
 	./public/app/vues/template/partials/_main.php
 */
+use \Noyau\Classes\Template;
 ?>
 
 <main>
@@ -11,13 +12,13 @@
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                   <!-- ZONE DYNAMIQUE -->
-                    <?php echo $content; ?>
+                    <?php
+                      echo(Template::getZone('content'));
+                    ?>
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
-
                           <?php include '../app/vues/template/partials/_aside.php'; ?>
-
                     </div>
                 </div>
             </div>

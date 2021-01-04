@@ -4,7 +4,7 @@
     PARAMETRES DE L'APPLICATION
 */
 
-// ZONES DYNAMIQUES
+// // ZONES DYNAMIQUES
 	$content ='';
 	$title = '';
 

@@ -6,8 +6,9 @@ Modele d'un autheur
  */
 
 namespace App\Modeles;
+use \Noyau\Classes\ModeleGenerique;
 
-class Author extends \Noyau\Classes\ModeleGenerique {
+class Author extends ModeleGenerique {
 
   private $_id = null;
   private $_firstname;
@@ -41,20 +42,20 @@ class Author extends \Noyau\Classes\ModeleGenerique {
   public function setId(int $data = null){
     if (isset($data)){$this->_id = $data;}
   }
-  public function setFirstname(){
-    if (isset($data)){$this->_firstname= $data;}
+  public function setFirstname(string $data = null){
+    if (isset($data)){$this->_firstname = $data;}
   }
-  public function setLastname(){
-    if (isset($data)){$this->_lastname= $data;}
+  public function setLastname(string $data = null){
+    if (isset($data)){$this->_lastname = $data;}
   }
-  public function setBiography(){
-    if (isset($data)){$this->_biography= $data;}
+  public function setBiography(string $data = null){
+    if (isset($data)){$this->_biography = $data;}
   }
-  public function setAvatar(){
-    if (isset($data)){$this->_avatar= $data;}
+  public function setAvatar(string $data = null){
+    if (isset($data)){$this->_avatar = $data;}
   }
-  public function setCreated_at(){
-    if (isset($data)){$this->_created_at= $data;}
+  public function setCreated_at(string $data = null){
+    if (isset($data)){$this->_created_at = $data;}
   }
 
 }

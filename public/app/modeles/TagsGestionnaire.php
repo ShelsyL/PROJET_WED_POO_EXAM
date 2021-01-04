@@ -12,15 +12,9 @@ class TagsGestionnaire extends GestionnaireGenerique {
 
 	public function __construct(){
 		$this->_table = 'tags';
-		$this->_class = '\App\Modeles\Tag';
+    parent::__construc();
 	}
 
-	// Va chercher tout (Tags)
-	public function findAllTags() :array {
-		return $this->findAll('name',null,null);
-	}
-
-	// Va chercher tout les tags par l'id du post
 	public function findAllByPostId(int $postId) :array {
 		$sql = "SELECT *
 	    		  FROM tags t
@@ -37,5 +31,4 @@ class TagsGestionnaire extends GestionnaireGenerique {
 
 		return $this->fromAssocToObject($tagsResult);
 	}
-
 }

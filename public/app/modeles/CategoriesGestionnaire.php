@@ -4,17 +4,14 @@
 	MODELE DES CATEGORIES
 */
 namespace App\Modeles;
+use \App\Modeles\Category;
+use \Noyau\Classes\GestionnaireGenerique;
 
-class CategoriesGestionnaire {
+class CategoriesGestionnaire extends GestionnaireGenerique{
 
-	// Va chercher tout (Catégories)
-	function findAll (\PDO $connexion) :array {
-		$sql = "SELECT *
-						FROM categories
-	    			ORDER BY name ASC;";
-	  $rs = $connexion->query($sql);
-	  $category = return $rs->fetchAll(\PDO::FETCH_ASSOC); // On retourne un tableau indéxé de tableau associatif dans $catégories (./app/vues/template/partials/_aside.php)
-		return new Categorie($categories);
+	function __construct(){
+		$this->_table = 'categories';
+		parent::__construc();
 	}
 
 }

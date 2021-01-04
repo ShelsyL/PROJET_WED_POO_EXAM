@@ -10,15 +10,16 @@ abstract class App {
 
   // Url root
   private static $_root;
-  // connexion db
+  // connexion DB
   private static $_connexion = null;
   // bool - true si les variables (root,connexion,...) sont initilisées
   private static $_start = false;
-  // ?
+  
   private static $_template;
 
    // GETTERS
-   // Lié à la classe, Pas à un objet instancier.   public static function getConnexion(){
+   // Lié à la classe, Pas à un objet instancier.
+   public static function getConnexion(){
      return SELF::$_connexion; // C'est static donc SELF
    }
    public static function getRoot(){

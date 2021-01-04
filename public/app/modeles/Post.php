@@ -10,7 +10,7 @@ use \Noyau\Classes\ModeleGenerique;
 
 // Un Post contient
 // - Id - Titre - Content - Image - Created_at - Auteur - Categories - Tags
-class Post extends ClasseGenerique {
+class Post extends ModeleGenerique {
 
 private $_id = null;
 private $_title;
@@ -37,7 +37,7 @@ public function getImage() :string{
 public function getCreated_at() :string{
   return $this->_created_at;
 }
-public function getAuthor_id() :string{
+public function getAuthor_id() :int{
   return $this->_author_id;
 }
 public function getCategorie_id() :string{
@@ -46,39 +46,39 @@ public function getCategorie_id() :string{
 
 // SETTERS - HYDRATER
 public function setId(int $data = null){
-  if (isset($data)):
+  if (isset($data)){
     $this->_id = $data;
-  endif;
+  }
 }
 public function setTitle(string $data = null){
-  if (isset($data)):
+  if (isset($data)){
     $this->_title = $data;
-    endif;
+    }
 }
 public function setContent(string $data = null){
-  if (isset($data)):
+  if (isset($data)){
     $this->_content = $data;
-    endif;
+    }
 }
 public function setImage(string $data = null){
-  if (isset($data)):
+  if (isset($data)){
     $this->_image = $data;
-    endif;
+    }
 }
 public function setCreated_at(string $data = null){
-  if (isset($data)):
+  if (isset($data)){
     $this->_created_at = $data;
-    endif;
+    }
 }
-public function setAuthor_id(string $data = null){
-  if (isset($data)):
-    $this->author_id = $data;
-    endif;
+public function setAuthor_id(int $data = null){
+  if (isset($data)){
+    $this->_author_id = $data;
+    }
 }
 public function setCategorie_id(string $data = null){
-  if (isset($data)):
+  if (isset($data)){
     $this->_categorie_id = $data;
-    endif;
+    }
 }
 
 

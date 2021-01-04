@@ -9,10 +9,10 @@ use \Noyau\Classes\ControleurGenerique;
 use \App\Modeles\TagsGestionnaire;
 use \App\Modeles\AuthorsGestionnaire;
 
-class PostsControleur extends ControleurGenerique {
+class CategoriesControleur extends ControleurGenerique {
 
   public function __construct(){
-    $this->_table='posts';
+    $this->_table='categories';
     parent::__construct();
   }
 

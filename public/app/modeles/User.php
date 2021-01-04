@@ -6,8 +6,9 @@ Modele d'un User
  */
 
 namespace App\Modeles;
+use \Noyau\Classes\ModeleGenerique;
 
-class User extends \Noyau\Classes\ModeleGenerique {
+class User extends ModeleGenerique {
 
   private $_id = null, $_login, $_password, $_createdAt;
 

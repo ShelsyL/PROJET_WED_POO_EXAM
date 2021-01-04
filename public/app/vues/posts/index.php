@@ -1,23 +1,21 @@
 <?php
 /*
 	./public/app/vues/posts/index.php
-  LISTE DES POSTS
 	Variables disponibles :
-      -$post : OBJET Post (id, title, content, created_at, image, author_id, categorie_id)
-)
+    	- $posts : ARRAY(ARRAY(id, title, content, created_at, image, author_id, categorie_id))
 */
+use \Noyau\Classes\Template;
+?>
+
+<?php
+//Template::startZone();
 ?>
 
 <div class="blog_left_sidebar">
 
-<!-- LISTE DES POSTS -->
+<!-- LISTE DES ARTICLES/POSTS -->
   <?php
-  var_dump($postsTags);
-    foreach ($postsTags as $postTag):
-
-      $post = $postTag['post'];
-      $tags = $postTag['tags'];
-
+    foreach ($posts as $post):
       $created_at = strtotime($post->getCreated_at()); // On transforme la date en champs de type date
       ?>
 
@@ -27,29 +25,35 @@
         <div class="blog_item_img">
             <img class="card-img rounded-0" src="assets/img/blog/<?php echo $post->getImage(); ?>" alt="">
             <a href="#" class="blog_item_date">
-              <!-- DATE DU POST-->
                 <h3><?php echo date('d', $created_at) ?></h3>
                 <p><?php echo date('M', $created_at) ?></p>
             </a>
         </div>
 
         <div class="blog_details">
-
-          <!-- LIEN DU POST -->
-            <a class="d-inline-block" href="posts/<?php echo $post->getId();?>/<?php echo \Noyau\Classes\Utils::slugify($post->getTitle()); ?>">
-            <!-- TITRE DU POST -->
-                <h2><?php echo $post->getTitle(); ?></h2>
+            <a class="d-inline-block" href="posts/<?php echo $post->getId(); ?>/<?php echo \Noyau\Classes\Utils::slugify($post->getTitle()); ?>">
+                <h2><?php echo $post->getTitle();?></h2>
             </a>
-
-            <!-- CONTENT DU POST -->
             <p><?php echo $post->getContent(); ?></p>
 
-            <!-- TAG(S) DU POST -->
-            <?php
-              foreach($tags as $tag){
-                echo $tag->getName();
-              }
+            <!-- <ul class="blog-info-link">
+                <li>
+                  <a href="#">
+                    <?php //foreach ($tags as $tag): ?>
+                       <i class="fa fa-user"></i><?php //echo $tag['name']; ?>
+                    <?php //endforeach; ?>
+                  </a>
+                </li>
+            </ul> -->
+
+            <!-- TAGS LIST -->
+              <?php
+             // On inclus le controleur tags
+            // On lance (la liste des tags qui correspondent au post) l'action indexByPostIdAction (index, car c'est une liste de chose mais par PostID)
+            //$tagsCtlr = new \App\Controleurs\TagsControleur();
+            //$tagsCtlr->showAction($post->getId()); // On lui balance la connexion et le postId
             ?>
+
         </div>
     </article>
   <?php endforeach; ?>
@@ -62,3 +66,6 @@
         </ul>
     </nav>
 </div>
+
+<?php //Template::stopZone('content');
+?>

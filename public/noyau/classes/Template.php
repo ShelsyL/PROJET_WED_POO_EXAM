@@ -1,13 +1,16 @@
 <?php
 
-abstract class Template
-{
+namespace Noyau\Classes;
+
+abstract class Template {
 
   private static $_zone = null;
 
   // GETTERS
+    // Getter avec parametre $zone qui récupere la valeur de la clé donné en parametre (ex: $_zone est 'content', il recupere la valeur dont la cle est 'content')
   public static function getZone(string $zone)
   {
+    // return SELF::$_zone['content'];
     return SELF::$_zone[$zone];
   }
 
@@ -34,4 +37,3 @@ abstract class Template
     endforeach;
   }
 }
-?>

@@ -14,8 +14,8 @@
       <?php foreach ($categories as $category): ?>
         <li>
             <a href="#" class="d-flex">
-                <p><?php echo $category['name']; ?></p>
-                <p>(<?php echo $category['id']; ?>)</p>
+              <p><?php echo $category->getName(); ?></p>
+              <p>(<?php echo $category->getId(); ?>)</p>
             </a>
         </li>
       <?php endforeach; ?>
